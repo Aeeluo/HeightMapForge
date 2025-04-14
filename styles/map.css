@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+}
+
+#map {
+    flex-grow: 1;
+    height: 100%;
+}
+
+#sidebar {
+    width: 300px;
+    padding: 15px;
+    background: #f4f4f9;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar h3 {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input, .form-group select {
+    padding: 7px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-group button {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background: #0056b3;
+}
