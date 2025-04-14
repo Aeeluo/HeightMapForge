@@ -1,0 +1,51 @@
+const map = L.map('map', {
+    center: [0, 0], // Default center
+    zoom: 2, // Default zoom level
+    scrollWheelZoom: 'center',
+
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const layers = {
+        OpenStreetMap: L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 19,
+        }),
+        OpenTopoMap: L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenTopoMap (CC-BY-SA)',
+            maxZoom: 17,
+        }),
+        CartoDBPositron: L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+            attribution: '&copy; <a href="https://www.carto.com/">CartoDB</a>',
+            subdomains: "abcd",
+            minZoom: 0,
+            maxZoom: 19,
+        }),
+        CartoDBDarkMatter: L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.carto.com/">CartoDB</a>',
+            subdomains: 'abcd',
+            maxZoom: 20,
+        }),
+        ESRIWorldImagery:  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community',
+            maxZoom: 18,
+        }),
+    }
+
+    // Set default layer
+    layers['OpenStreetMap'].addTo(map);
+
+    // Listen for 'datasetTypeChanged' events
+    document.addEventListener('datasetTypeChanged', (e) => {
+        const selectedDataset = e.detail.datasetType;
+
+        // Remove current layer and add the new one
+        map.eachLayer((layer) => map.removeLayer(layer)); // Clear any existing layer
+        layers[selectedDataset].addTo(map);
+        console.log(`Switched to dataset: ${selectedDataset}`);
+    });
+});
+   
+// Export the map instance for use in other modules
+export { map };
