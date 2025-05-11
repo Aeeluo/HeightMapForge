@@ -1,6 +1,6 @@
 const map = L.map('map', {
-    center: [0, 0], // Default center
-    zoom: 2, // Default zoom level
+    center: [45.3, -66.5], // Initial center coordinates
+    zoom: 6,
     scrollWheelZoom: 'center',
 
 })
@@ -33,19 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }),
     }
 
-    // Set default layer
     layers['OpenStreetMap'].addTo(map);
 
-    // Listen for 'datasetTypeChanged' events
     document.addEventListener('datasetTypeChanged', (e) => {
         const selectedDataset = e.detail.datasetType;
 
-        // Remove current layer and add the new one
-        map.eachLayer((layer) => map.removeLayer(layer)); // Clear any existing layer
+        map.eachLayer((layer) => map.removeLayer(layer));
         layers[selectedDataset].addTo(map);
         console.log(`Switched to dataset: ${selectedDataset}`);
     });
 });
    
-// Export the map instance for use in other modules
 export { map };
