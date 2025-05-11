@@ -16,8 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
         document.dispatchEvent(event);
     });
 
+    // Set default value for currentZoom
+    currentZoom.value = 6;
 
-        /**
+    /**
      * [------------------]
      * [  Event listeners ]
      * [------------------] 

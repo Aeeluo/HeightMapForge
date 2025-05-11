@@ -13,6 +13,7 @@
   "dependencies": {
     "electron": "^34.2.0",
     "leaflet": "^1.9.4",
-    "leaflet-draw": "^1.0.4"
+    "leaflet-draw": "^1.0.4",
+    "leaflet-image": "^0.4.0"
   }
 }
