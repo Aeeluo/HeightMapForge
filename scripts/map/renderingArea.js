@@ -29,8 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         document.dispatchEvent(event);
-
-        console.log(`Square updated to center at: ${center.lat}, ${center.lng}`);
     };
 
     const setSquareOnClick = (e) => {

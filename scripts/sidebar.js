@@ -5,6 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const outputSize = document.getElementById("outputSize");
     const currentZoom = document.getElementById("currentZoom");
 
+    // Set default value for currentZoom
+    currentZoom.value = 6;
+
+    /**
+     * [------------------]
+     * [  Event listeners ]
+     * [------------------] 
+    */
+
     datasetSelect.addEventListener("change", (e) => {
         const datasetType = e.target.value;
 
@@ -15,15 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         document.dispatchEvent(event);
     });
-
-    // Set default value for currentZoom
-    currentZoom.value = 6;
-
-    /**
-     * [------------------]
-     * [  Event listeners ]
-     * [------------------] 
-    */
 
     // Handle Square output size change
     outputSize.addEventListener("change", (e) => {
