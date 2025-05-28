@@ -1,10 +1,14 @@
+import { apiURLs } from "../map/mapInit.js";
+
 let initialOutputSize = 1000; // Default square size = 1000 x 1000m
 
 document.addEventListener("DOMContentLoaded", () => {
     const datasetSelect = document.getElementById("mapType");
     const outputSize = document.getElementById("outputSize");
     const currentZoom = document.getElementById("currentZoom");
-
+    const selectDatasetType = document.getElementById("mapType");
+    const exportButton = document.getElementById('exportData');
+    
     // Set default value for currentZoom
     currentZoom.value = 6;
 
@@ -46,6 +50,30 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
         document.dispatchEvent(event);
+    });
+
+    exportButton.addEventListener('click', async () => {
+        console.log('Export button clicked!');
+
+        const outputZoom = document.getElementById("outputZoom").value;
+        const bounds = window.currentSquare.getBounds();
+        const bbox = [
+            bounds.getWest(),
+            bounds.getSouth(),
+            bounds.getEast(),
+            bounds.getNorth()
+        ];
+
+        const datasetType = selectDatasetType.options[selectDatasetType.selectedIndex].value;
+        const tileUrl = apiURLs[datasetType];
+
+        const config = {
+            tileUrl: tileUrl,
+            bbox: bbox,
+            zoom: outputZoom
+        }
+
+        await window.api.downloadTiles(config);
     });
 
     /**

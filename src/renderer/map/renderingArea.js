@@ -1,5 +1,5 @@
 import { map } from './mapInit.js';
-import { getInitialOutputSize } from '../sidebar.js';
+import { getInitialOutputSize } from '../components/sidebar.js';
 
 let outputSize = getInitialOutputSize(); // Default size in meters
 
@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
             L.latLng(center.lat - outputSize / 111320, center.lng - outputSize / (111320 * Math.cos(center.lat * Math.PI / 180))),
             L.latLng(center.lat + outputSize / 111320, center.lng + outputSize / (111320 * Math.cos(center.lat * Math.PI / 180)))
         );
-
 
         // Remove any existing square and add a new one
         if (window.currentSquare) {
@@ -57,15 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
     document.addEventListener('zoomChanged', (e) => {
         const zoom = e.detail.zoom;
         if (zoom) {
             map.setZoom(zoom);
         }
     });
-
-    
 
     // Initial square creation
     updateSquareAndMarker();
