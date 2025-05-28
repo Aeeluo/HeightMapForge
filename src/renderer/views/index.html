@@ -41,7 +41,7 @@
     </div>
     <div class="form-group">
         <label>Output size x size (in meters)</label>
-        <input type="text" id="outputSize" placeholder="e.g., 512x512" value="1000"/>
+        <input type="number" id="outputSize" placeholder="e.g., 512x512" value="1000"/>
     </div>
     <div class="form-group">
         <button id="exportData">Export</button>
@@ -52,8 +52,9 @@
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
-<script type="module" src="../scripts/map/mapInit.js"></script>
-<script type="module" src="../scripts/map/renderingArea.js"></script>
-<script type="module" src="../scripts/sidebar.js"></script>
+<script src="https://unpkg.com/leaflet-image/leaflet-image.js"></script>
+<script type="module" src="../map/mapInit.js"></script>
+<script type="module" src="../map/renderingArea.js"></script>
+<script type="module" src="../components/sidebar.js"></script>
 </body>
 </html>
